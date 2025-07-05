@@ -16,5 +16,5 @@ jobs:
       - run: go build ./cmd/os-bot
       - uses: golangci/golangci-lint-action@v3
         with:
-          version: v1.55
+          version: v1.58
           args: --timeout=5m
