@@ -1,3 +1,4 @@
+// Command line entry point for os-bot.
 package main
 
 import (
