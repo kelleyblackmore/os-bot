@@ -24,3 +24,11 @@ You can also run a single command directly:
 ./os-bot <command>
 ```
 
+
+## Installing Ollama
+
+To install the [Ollama](https://ollama.ai) CLI, run:
+
+```bash
+make install-ollama
+```
