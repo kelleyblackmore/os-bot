@@ -1,3 +1,4 @@
+// Package cli implements simple command handling for os-bot.
 package cli
 
 import (
