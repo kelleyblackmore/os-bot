@@ -24,6 +24,16 @@ You can also run a single command directly:
 ./os-bot <command>
 ```
 
+Here are the available commands:
+* `hello`: Prints "Hello, world!"
+* `version`: Prints the version of the application.
+* `ask <prompt>`: Asks a question to the Ollama model.
+
+Example:
+```
+./os-bot ask "What is the capital of France?"
+```
+
 
 ## Installing Ollama
 

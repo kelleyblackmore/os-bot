@@ -4,6 +4,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strings"
 
 	"github.com/example/os-bot/internal/cli"
 )
@@ -18,10 +19,10 @@ func main() {
 	}
 
 	if flag.NArg() == 0 {
-		fmt.Println("Usage: os-bot [flags] <command>")
-		fmt.Println("Commands: hello, version")
+		fmt.Println("Usage: os-bot [flags] <command> [args...]")
+		fmt.Println("Commands: hello, version, ask")
 		return
 	}
 
-	cli.HandleCommand(flag.Arg(0))
+	cli.HandleCommand(strings.Join(flag.Args(), " "))
 }

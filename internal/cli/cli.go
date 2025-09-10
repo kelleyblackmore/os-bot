@@ -5,6 +5,9 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
+
+	"github.com/example/os-bot/internal/ollama"
 )
 
 // Version of the os-bot application.
@@ -24,7 +27,7 @@ func RunInteractive() {
 			return
 		}
 		if text == "help" {
-			fmt.Println("Commands: hello, version, help, quit")
+			fmt.Println("Commands: hello, version, ask, help, quit")
 			continue
 		}
 		HandleCommand(text)
@@ -33,11 +36,29 @@ func RunInteractive() {
 
 // HandleCommand executes a single command string.
 func HandleCommand(cmd string) {
-	switch cmd {
+	parts := strings.SplitN(cmd, " ", 2)
+	command := parts[0]
+	var arg string
+	if len(parts) > 1 {
+		arg = parts[1]
+	}
+
+	switch command {
 	case "hello":
 		fmt.Println("Hello, world!")
 	case "version":
 		fmt.Printf("os-bot version %s\n", Version)
+	case "ask":
+		if arg == "" {
+			fmt.Println("Usage: ask <prompt>")
+			return
+		}
+		response, err := ollama.Ask(arg)
+		if err != nil {
+			fmt.Printf("Error: %v\n", err)
+			return
+		}
+		fmt.Println(response)
 	default:
 		fmt.Printf("unknown command: %s\n", cmd)
 	}
